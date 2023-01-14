@@ -1,0 +1,15 @@
+.btns-container_nav {
+    height: 30px;
+    width: 134px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #837F7F;
+}
+
+.btn_nav {
+    border: none;
+    background-color: inherit;
+
+}

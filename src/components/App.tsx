@@ -1,15 +1,18 @@
-import React from 'react';
-import { useGetGamesByTokenQuery } from '../store/service/gamesApi'
+import React, { Fragment } from 'react';
+import { Routes, Route } from 'react-router-dom'
+import { HomePage } from '../pages/HomePage';
 
 
-export function App() {
-    const { data } = useGetGamesByTokenQuery("");
+export function App(): JSX.Element {
 
-    console.log(data)
 
   return (
-    <div>
-     Start
-    </div>
+    <Fragment>
+      <Routes>
+        <Route path="/" element={ <HomePage /> } />
+        {/*<Route path="/:id" element={ <DetailsInformation /> } />*/}
+        {/*<Route path="/favorites" element={ <Favorites /> } />*/}
+      </Routes>
+    </Fragment>
   );
 }

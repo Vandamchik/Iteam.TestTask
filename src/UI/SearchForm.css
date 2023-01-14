@@ -1,0 +1,23 @@
+.form_search {
+    /*height: 30px;*/
+    /*width: 250px;*/
+    border-radius: 10px;
+    background-color: #837F7F;
+    padding: 5px;
+}
+
+.input_search {
+    width: auto;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    color: white;
+}
+.input_search:hover {
+
+}
+
+.btn_search {
+    border: none;
+    background-color: inherit;
+}
