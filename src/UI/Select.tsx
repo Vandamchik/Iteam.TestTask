@@ -1,12 +1,27 @@
 import React from 'react';
 import './Select.css'
 
-export function Select():JSX.Element {
+
+interface ISelectProps {
+    selectGameState: (text: string) => void
+}
+
+export function Select(props: ISelectProps):JSX.Element {
+    const { selectGameState } = props;
+
+
+    const selectGamesHandler = (targetValue: string) => {
+        selectGameState(targetValue)
+    }
+
 
     return (
-        <select className="select_search">
-            <option>Price</option>
-            <option>Publish Date</option>
+        <select
+            className="select_search"
+            onChange={(e) => selectGamesHandler(e.target.value)}
+        >
+            <option value="price">Price</option>
+            <option value="publishDate">Publish Date</option>
         </select>
     );
 }

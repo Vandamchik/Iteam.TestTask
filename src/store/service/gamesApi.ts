@@ -22,4 +22,4 @@ export const gamesAPI = createApi({
     })
 })
 
-export const { useGetGamesByTokenQuery } = gamesAPI;
+export const { useGetGamesByTokenQuery, useLazyGetGamesByTokenQuery } = gamesAPI;

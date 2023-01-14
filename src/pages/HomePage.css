@@ -11,10 +11,14 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 35px;
-    margin-left: 12px;
-    margin-right: 18px;
+    margin: 35px 18px 35px 12px;
     color: white;
+}
+
+.card-list_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 57px 30px;
 }
 
 

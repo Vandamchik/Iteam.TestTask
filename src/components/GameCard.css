@@ -1,0 +1,36 @@
+.card-container {
+    width: 263px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #17323A;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.card-img {
+    width: 263px;
+    height: 99px;
+}
+.card-content {
+    display: flex;
+    justify-content: space-between;
+
+}
+.card-text {
+    margin: 6px;
+    font-size: 18px;
+}
+
+
+.card-text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-like_container {
+    display: flex;
+    flex-direction: column-reverse;
+}
