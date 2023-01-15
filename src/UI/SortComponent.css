@@ -1,0 +1,38 @@
+.sort-icon_container {
+    position: relative;
+    top: 30px;
+    width: auto;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.sort-icon {
+    width: 45px;
+    background-color: #837F7F;
+    border-radius: 10px;
+    border: none;
+    padding: 3px;
+}
+.sort_btn {
+    background-color: inherit;
+    border: none;
+}
+
+.sort_btn:hover {
+    cursor: pointer;
+}
+
+.sort_dropdown {
+    background-color: #837F7F;
+    border: solid 1px black;
+}
+
+.sort-text_dropdown {
+    margin: 2px;
+}
+.sort-text_dropdown:hover {
+    cursor: pointer;
+}
+.sort-text_dropdown:active {
+    color: black;
+}

@@ -1,23 +1,22 @@
 import React, { Fragment,  useState } from 'react';
-import { useGetGamesByTokenQuery, useLazyGetGamesByTokenQuery } from '../store/service/gamesApi';
+import { useGetGamesByTokenQuery } from '../store/service/gamesApi';
 import { SteamIcon } from "../media/SteamIcon";
 import { SearchForm } from "../UI/SearchForm";
-import { SortIconComponent } from "../UI/SortIconComponent";
+import { SortComponent } from "../UI/SortComponent";
 import { Select } from "../UI/Select";
 import { SearchButtons } from "../UI/SearchButtons";
 import { GameCard } from "../components/GameCard";
-import './HomePage.css';
 import { IGameInfoData } from "../modules/module";
-import {useActions} from "../hooks/actions";
-import {WrapperSection} from "../layout/WrapperSection";
+import { WrapperSection } from "../layout/WrapperSection";
+import './HomePage.css';
 
 
 export function HomePage() {
-    const [searchGame, setSearchGame] = useState<string>("");
-    const [selectGames, setSelectGames] = useState<string>("");
+    const [ searchGame, setSearchGame ] = useState<string>("");
+    const [ selectGames, setSelectGames ] = useState<string>("");
+    const [ sortGames, setSortGames] = useState<string>("")
     const { data, isLoading, error } = useGetGamesByTokenQuery("");
     let gamesData:IGameInfoData[] = structuredClone(data!)
-    // const [fetchGamesData,{ data:gamesData, isLoading, error } ] = useLazyGetGamesByTokenQuery()
 
 
     if(gamesData && searchGame) {
@@ -51,20 +50,41 @@ export function HomePage() {
         },[])
     }
 
-    // if(gamesData && selectGames) {
-    //     searchGamesFilter = gamesData!.filter(item => console.log(item))
-    // }
+    if(sortGames === "lower" && selectGames === "price") {
+        gamesData = gamesData!.reduce<IGameInfoData[]>((accum:IGameInfoData[], item:IGameInfoData): IGameInfoData[] => {
+            item.numberPrice = parseFloat(item.price.toString().trim());
+            if(Number.isNaN(item.numberPrice)) {
+                item.numberPrice = 0;
+                accum.push(item)
+            }
+            else accum.push(item);
+            accum.sort((a:IGameInfoData, b:IGameInfoData) => a.numberPrice! - b.numberPrice!);
+            return accum
+        },[])
+    }
 
-    // console.log(gamesData)
+    if(sortGames === "lower" && selectGames === "publishDate") {
+        gamesData = gamesData!.reduce<IGameInfoData[]>((accum:IGameInfoData[], item:IGameInfoData): IGameInfoData[] => {
+            let releasedDateValue = new Date(item.released).toString()
+            item.releasedDate = Date.parse(releasedDateValue);
+            if(Number.isNaN(item.releasedDate)){
+                item.releasedDate = 0
+                accum.push(item)
+            }
+            else accum.push(item)
+            accum.sort((a:IGameInfoData,b:IGameInfoData) => a.releasedDate! - b.releasedDate!)
+            return accum
+        },[])
+    }
 
     return (
         <Fragment>
         <WrapperSection>
             <div className="search-container">
                 <SteamIcon />
-                <SearchForm searchFormGame={setSearchGame} inputType="text" inputValue={searchGame} />
-                <SortIconComponent />
-                <Select selectGameState={setSelectGames} />
+                <SearchForm searchFormGame={ setSearchGame } inputType="text" inputValue={searchGame} />
+                <SortComponent sortGameOrder={ setSortGames }/>
+                <Select selectGameState={ setSelectGames } />
                 <SearchButtons />
             </div>
             { isLoading && <p style={{color: "red"}}>Loading...</p> }
