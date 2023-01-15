@@ -7,23 +7,49 @@ import { Select } from "../UI/Select";
 import { SearchButtons } from "../UI/SearchButtons";
 import { GameCard } from "../components/GameCard";
 import './HomePage.css';
+import { IGameInfoData } from "../modules/module";
 
 
 export function HomePage() {
     const [searchGame, setSearchGame] = useState<string>("");
     const [selectGames, setSelectGames] = useState<string>("");
-    let { data:gamesData, isLoading, error } = useGetGamesByTokenQuery("");
+    const { data, isLoading, error } = useGetGamesByTokenQuery("");
+    let gamesData:IGameInfoData[] = structuredClone(data!)
     // const [fetchGamesData,{ data:gamesData, isLoading, error } ] = useLazyGetGamesByTokenQuery()
-    let nowDate = new Date()
 
-
-    if(selectGames === "price") console.log('price')
-
-    if(selectGames === "publishDate") console.log('publishDate')
 
     if(gamesData && searchGame) {
         gamesData = gamesData!.filter(item => item.title.toLowerCase().includes(searchGame))
     }
+
+    if(selectGames === "price") {
+        gamesData = gamesData!.reduce<IGameInfoData[]>((accum:IGameInfoData[], item:IGameInfoData): IGameInfoData[] => {
+            let numberValue = parseFloat(item.price.toString().trim());
+            item.numberPrice = numberValue;
+            if(Number.isNaN(item.numberPrice)) {
+                item.numberPrice = 0;
+                accum.push(item)
+            }
+            else accum.push(item);
+            accum.sort((a:IGameInfoData, b:IGameInfoData) => b.numberPrice! - a.numberPrice!);
+            return accum
+        },[])
+    }
+
+    if (selectGames === "publishDate") {
+        gamesData = gamesData!.reduce<IGameInfoData[]>((accum:any[], item:any): any[] => {
+            let releasedDateValue = new Date(item.released).toString()
+            item.releasedDate = Date.parse(releasedDateValue);
+            if(Number.isNaN(item.releasedDate)){
+                item.releasedDate = 0
+                accum.push(item)
+            }
+            else accum.push(item)
+            accum.sort((a:IGameInfoData,b:IGameInfoData) => b.releasedDate! - a.releasedDate!)
+            return accum
+        },[])
+    }
+
     // if(gamesData && selectGames) {
     //     searchGamesFilter = gamesData!.filter(item => console.log(item))
     // }

@@ -4,7 +4,7 @@ import './GameCard.css'
 interface IGameCardProps {
     title: string,
     image: string,
-    price: string,
+    price: string | number,
     released: string
 }
 
