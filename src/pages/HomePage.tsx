@@ -67,7 +67,7 @@ export function HomePage() {
                 <Select selectGameState={setSelectGames} />
                 <SearchButtons />
             </div>
-            {isLoading && <p style={{color: "red"}}>Loading...</p>}
+            { isLoading && <p style={{color: "red"}}>Loading...</p> }
             { gamesData &&
                 ( <div className="card-list_container">
                     { gamesData!.map(item =>
@@ -81,7 +81,7 @@ export function HomePage() {
                     }
                 </div> )
             }
-            {(!isLoading && gamesData.length === 0) && <p>No Games with this name</p> }
+            { (!isLoading && gamesData.length === 0) && <p>No Games with this name</p> }
         </WrapperSection>
         </Fragment>
     );

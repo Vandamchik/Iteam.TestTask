@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { WrapperSection } from "../layout/WrapperSection";
 import { BackToHomeButton } from "../UI/BackToHomeButton";
 import { useAppSelector } from "../hooks/redux";
-import './Favorites.css';
 import { useGetGamesByTokenQuery } from "../store/service/gamesApi";
-import { IGameInfoData } from "../modules/module";
-import {GameCard} from "../components/GameCard";
+import { GameCard } from "../components/GameCard";
+import './FavoritesPage.css';
 
 
-export function Favorites() {
+export function FavoritesPage() {
     const { favStorageData } = useAppSelector(state => state.favorites);
     const { data, isLoading, error } = useGetGamesByTokenQuery("");
     const filteredFavData = [];
@@ -29,14 +28,14 @@ export function Favorites() {
                 <BackToHomeButton />
                 <h2 className="favorites_title">Favorite list</h2>
             </div>
-            <div>
+            <div className="favorites_list">
                 { filteredFavData.length > 0 && filteredFavData.map(el =>
                     ( <GameCard
-                        title={el.title}
-                        image={el.imgUrl}
-                        price={el.price}
-                        released={el.released}
-                        key={el.title}
+                        title={ el.title }
+                        image={ el.imgUrl }
+                        price={ el.price }
+                        released={ el.released }
+                        key={ el.title }
                     /> )) }
             </div>
         </WrapperSection>

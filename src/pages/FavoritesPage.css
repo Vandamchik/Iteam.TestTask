@@ -1,0 +1,19 @@
+.favorite_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 57px 30px;
+}
+
+.favorites_title {
+    margin: 30px auto;
+    color: white;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.favorites_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}

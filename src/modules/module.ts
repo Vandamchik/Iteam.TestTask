@@ -10,6 +10,14 @@ export interface IGameInfoData {
     releasedDate?: number,
 }
 
+export interface IDetailsPageProps {
+    title: string,
+    price: string | number,
+    released: string,
+    reviewSummary: string,
+    imgUrl: string
+}
+
 export interface IFavoritesGamesSlice {
     favStorageData: IGameInfoData[] | any[],
 }
