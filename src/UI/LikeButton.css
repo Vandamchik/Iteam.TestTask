@@ -1,0 +1,8 @@
+.like_btn {
+    background-color: inherit;
+    border: none;
+}
+
+.like_btn:hover {
+    cursor: pointer
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LikeButton } from "../UI/LikeButton";
 import './GameCard.css'
 
 interface IGameCardProps {
@@ -10,7 +11,6 @@ interface IGameCardProps {
 
 export function GameCard(props:IGameCardProps) {
     const {title, image, price, released } = props;
-    // console.log(released)
 
     return (
         <div className="card-container">
@@ -22,7 +22,7 @@ export function GameCard(props:IGameCardProps) {
                     <p className="card-text">{price}</p>
                 </div>
                 <div className="card-like_container">
-                    <p className="card-text">like</p>
+                    <LikeButton titleId={title}/>
                 </div>
             </div>
         </div>

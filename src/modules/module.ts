@@ -10,3 +10,13 @@ export interface IGameInfoData {
     releasedDate?: number,
 }
 
+export interface IFavoritesGamesSlice {
+    favStorageData: IGameInfoData[] | any[],
+}
+
+export enum FavoritesSliceOption {
+    FAV_KEY = "favgames",
+    FAV_SLICE_NAME = "favoritesGames"
+}
+
+

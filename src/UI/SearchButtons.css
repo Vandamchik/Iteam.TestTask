@@ -11,5 +11,9 @@
 .btn_nav {
     border: none;
     background-color: inherit;
+}
 
+.link_nav {
+    text-decoration: none;
+    color: inherit;
 }

@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit'
+import { favoritesActions } from "../store/service/favoritesSlice"
 
 
 const actions = {
-    // ...favoritesActions
+    ...favoritesActions
 }
 
 export function useActions() {

@@ -19,8 +19,9 @@ export function Select(props: ISelectProps):JSX.Element {
         <select
             className="select_search"
             onChange={(e) => selectGamesHandler(e.target.value)}
+            defaultValue={"DEFAULT"}
         >
-            <option defaultValue="" selected disabled hidden>Choose filter</option>
+            <option value="DEFAULT" disabled hidden>Choose filter</option>
             <option value="price">Price</option>
             <option value="publishDate">Publish Date</option>
         </select>

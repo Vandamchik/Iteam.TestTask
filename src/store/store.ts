@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { gamesAPI } from "./service/gamesApi"
+import { gamesAPI } from "./service/gamesApi";
+import { favoritesReducer } from "./service/favoritesSlice"
 
 
 const rootReducer = combineReducers({
     [gamesAPI.reducerPath]: gamesAPI.reducer,
-    // favorites: favoritesReducer
+    favorites: favoritesReducer
 })
 
 export const setupStore = () => {

@@ -1,0 +1,14 @@
+.back_btn {
+    height: 35px;
+    margin: auto 0;
+    border: none;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #837F7F;
+    width: 100px;
+}
+
+.back_link {
+    text-decoration: none;
+    color: inherit;
+}

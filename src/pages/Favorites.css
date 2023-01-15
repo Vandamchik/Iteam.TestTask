@@ -1,0 +1,10 @@
+.favorite_container {
+    margin: 30px;
+    display: flex;
+}
+.favorites_title {
+    margin: 40px auto;
+    color: white;
+    font-weight: 700;
+    font-size: 32px;
+}

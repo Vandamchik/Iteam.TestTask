@@ -1,12 +1,6 @@
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #171A21;
-}
-.container_nav {
+.search-container {
     height: 35px;
-    width: 100%;
+    width: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
