@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IFavoritesGamesSlice, FavoritesSliceOption } from '../../modules/module'
 
-// const FAV_KEY = "favgames";
-
 const initialState: IFavoritesGamesSlice = {
     favStorageData: JSON.parse(localStorage.getItem(FavoritesSliceOption.FAV_KEY) ?? "[]"),
 }

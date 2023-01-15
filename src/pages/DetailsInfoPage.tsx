@@ -7,7 +7,7 @@ import './DetailsInfoPage.css'
 
 export function DetailsInfoPage() {
     const { id } = useParams();
-    const { data, isLoading, error } = useGetGamesByTokenQuery("");
+    const { data, isLoading, error } = useGetGamesByTokenQuery("1");
     let detailInfoArr = [];
 
     if (data) {

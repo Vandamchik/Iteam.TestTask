@@ -1,15 +1,12 @@
-import React, { FormEvent} from 'react';
+import React, { FormEvent, useTransition } from 'react';
 import { MagnifyingLensIcon }  from "../media/MagnifyingLensIcon";
+import { ISearchProps } from "../modules/module";
 import './SearchForm.css'
 
-interface ISearchProps {
-    searchFormGame: (text:string) => void,
-    inputType: string,
-    inputValue: string
-}
 
-export function SearchForm(props: ISearchProps):JSX.Element {
-    const { searchFormGame, inputType, inputValue } = props;
+export function SearchForm(props: ISearchProps): JSX.Element {
+    const {searchFormGame, inputType, inputValue} = props;
+    const [isPending, startTransition] = useTransition();
 
     const formHandler = (event: FormEvent) => {
         event.preventDefault()
@@ -22,10 +19,10 @@ export function SearchForm(props: ISearchProps):JSX.Element {
                 className="input_search"
                 value={inputValue}
                 type={`${inputType}`}
-                onChange={e => searchFormGame(e.target.value.trim())}
+                onChange={e => startTransition(() => searchFormGame(e.target.value.trim()))}
             />
             <button className="btn_search" type="submit">
-                <MagnifyingLensIcon />
+                <MagnifyingLensIcon/>
             </button>
         </form>
     );

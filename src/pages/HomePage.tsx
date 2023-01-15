@@ -1,10 +1,10 @@
 import React, { Fragment,  useState } from 'react';
-import { useGetGamesByTokenQuery } from '../store/service/gamesApi';
+import { useGetGamesByTokenQuery, useLazyGetGamesByTokenQuery } from '../store/service/gamesApi';
 import { SteamIcon } from "../media/SteamIcon";
 import { SearchForm } from "../UI/SearchForm";
 import { SortComponent } from "../UI/SortComponent";
 import { Select } from "../UI/Select";
-import { SearchButtons } from "../UI/SearchButtons";
+import { SearchButtons } from "../UI/buttons/SearchButtons";
 import { GameCard } from "../components/GameCard";
 import { IGameInfoData } from "../modules/module";
 import { WrapperSection } from "../layout/WrapperSection";
@@ -15,9 +15,20 @@ export function HomePage() {
     const [ searchGame, setSearchGame ] = useState<string>("");
     const [ selectGames, setSelectGames ] = useState<string>("");
     const [ sortGames, setSortGames] = useState<string>("")
-    const { data, isLoading, error } = useGetGamesByTokenQuery("");
-    let gamesData:IGameInfoData[] = structuredClone(data!)
+    const [ currentPage, setCurrentPage ] = useState<string>('1')
+    const { data, isLoading, error } = useGetGamesByTokenQuery(currentPage);
+    const [fetchGames, { data:lazyData, isLoading: lazyLoading }] = useLazyGetGamesByTokenQuery();
+    let gamesData:IGameInfoData[] = structuredClone(data!);
+    let pagArr = ["1","2","3","4","5"];
 
+    const paginationHandler = (id: string) => {
+        setCurrentPage(id)
+        fetchGames(id)
+    }
+
+    if (lazyData && !lazyLoading) {
+        gamesData = structuredClone(lazyData)
+    }
 
     if(gamesData && searchGame) {
         gamesData = gamesData!.filter(item => item.title.toLowerCase().includes(searchGame))
@@ -101,7 +112,16 @@ export function HomePage() {
                     }
                 </div> )
             }
-            { (!isLoading && gamesData.length === 0) && <p>No Games with this name</p> }
+            { (!isLoading && gamesData.length === 0) && <p className="card-list__empty">
+                No Games with this name, try another one</p> }
+            <div className="pagination_container">
+                { pagArr.map(item => <p
+                    key={item}
+                    className="pagination_numbers"
+                    id={item}
+                    onClick={e => paginationHandler(e.currentTarget.id)}
+                >{item}</p>)}
+            </div>
         </WrapperSection>
         </Fragment>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { IDetailsPageProps } from "../modules/module";
-import { BackToHomeButton } from "../UI/BackToHomeButton";
+import { BackToHomeButton } from "../UI/buttons/BackToHomeButton";
 import './DetailCard.css';
 
 

@@ -10,15 +10,15 @@ export const gamesAPI = createApi({
     }),
     endpoints: (builder) => ({
         getGamesByToken: builder.query<IGameInfoData[], string>({
-            query: () =>({
-                url: '',
+            query: (pageNum:string) => ({
+                url: `page/${pageNum}`,
                 method: 'GET',
                 headers: {
                     'X-RapidAPI-Key': GamesApiOptions.XRapidAPIKey,
                     'X-RapidAPI-Host': GamesApiOptions.XRapidAPIHost
                 }
             })
-        }),
+        })
     })
 })
 

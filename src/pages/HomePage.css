@@ -15,5 +15,24 @@
     margin: 57px 30px;
 }
 
+.card-list__empty {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+
+.pagination_container {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.pagination_numbers {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 1px solid red;
+    border-radius: 50px;
+}
+
 
 

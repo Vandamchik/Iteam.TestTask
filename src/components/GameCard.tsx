@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { LikeButton } from "../UI/LikeButton";
+import { LikeButton } from "../UI/buttons/LikeButton";
 import { useAppSelector } from "../hooks/redux";
 import './GameCard.css'
-import {LearnMoreButton} from "../UI/LearnMoreButton";
+import {LearnMoreButton} from "../UI/buttons/LearnMoreButton";
 
 interface IGameCardProps {
     title: string,

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { SortIcon } from "../media/SortIcon";
+import { ISortComponentProps } from "../modules/module";
 import './SortComponent.css'
 
-export interface ISortComponentProps {
-    sortGameOrder: (id: string) => void
-}
 
 export function SortComponent(props: ISortComponentProps) {
     const [toggleBtn, setToggleBtn] = useState<boolean>(false);

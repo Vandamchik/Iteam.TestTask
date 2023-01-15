@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react';
-import { LikeIcon } from "../media/LikeIcon";
-import { useActions } from "../hooks/actions";
+import { LikeIcon } from "../../media/LikeIcon";
+import { useActions } from "../../hooks/actions";
+import { ILikeButtonProps } from "../../modules/module";
 import './LikeButton.css';
 
-export interface ILikeButtonProps {
-    titleId: string,
-    isLiked: boolean | null,
-    changeIsLiked: (arg:boolean) => void
-}
+
 
 export function LikeButton( props: ILikeButtonProps ) {
     const { addFavData, removeFavData } = useActions();

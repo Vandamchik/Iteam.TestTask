@@ -1,6 +1,6 @@
 import React from 'react';
 import { WrapperSection } from "../layout/WrapperSection";
-import { BackToHomeButton } from "../UI/BackToHomeButton";
+import { BackToHomeButton } from "../UI/buttons/BackToHomeButton";
 import { useAppSelector } from "../hooks/redux";
 import { useGetGamesByTokenQuery } from "../store/service/gamesApi";
 import { GameCard } from "../components/GameCard";
@@ -9,7 +9,7 @@ import './FavoritesPage.css';
 
 export function FavoritesPage() {
     const { favStorageData } = useAppSelector(state => state.favorites);
-    const { data, isLoading, error } = useGetGamesByTokenQuery("");
+    const { data, isLoading, error } = useGetGamesByTokenQuery("1");
     const filteredFavData = [];
 
     if (data && favStorageData.length > 0) {

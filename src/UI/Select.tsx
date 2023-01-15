@@ -1,10 +1,7 @@
 import React from 'react';
+import { ISelectProps } from "../modules/module";
 import './Select.css'
 
-
-interface ISelectProps {
-    selectGameState: (text: string) => void
-}
 
 export function Select(props: ISelectProps):JSX.Element {
     const { selectGameState } = props;
@@ -13,7 +10,6 @@ export function Select(props: ISelectProps):JSX.Element {
     const selectGamesHandler = (targetValue: string) => {
         selectGameState(targetValue)
     }
-
 
     return (
         <select
